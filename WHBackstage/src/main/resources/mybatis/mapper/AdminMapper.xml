@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zxy.whbackstage.repository.AdminMapper">
+    <resultMap id="BaseResultMap" type="com.zxy.whbackstage.model.Admin">
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="true_name" property="trueName" jdbcType="VARCHAR" />
+        <result column="gender" property="userName" jdbcType="VARCHAR" />
+        <result column="mobile" property="userName" jdbcType="VARCHAR" />
+        <result column="password" property="userName" jdbcType="VARCHAR" />
+        <result column="email" property="userName" jdbcType="VARCHAR" />
+        <result column="create_time" property="userName" jdbcType="VARCHAR" />
+        <result column="status" property="userName" jdbcType="VARCHAR" />
+        <result column="founder" property="userName" jdbcType="VARCHAR" />
+        <result column="is_online" property="userName" jdbcType="VARCHAR" />
+        <result column="is_limit" property="userName" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="findAdminByIdentification" resultMap="BaseResultMap" parameterType="com.zxy.whbackstage.model.Admin">
+        select za.id,za.user_name,za.true_name,za.gender,za.mobile,za.password,za.email,za.create_time,
+               za.status,za.founder,za.is_online,za.is_limit
+        from zxy_admin za
+        <where>
+            <if test="admin.userName != null and admin.userName != ''">
+                and za.user_name = #{admin.userName}
+            </if>
+            <if test="admin.userName != null and admin.userName != ''">
+                and za.password = #{admin.password}
+            </if>
+        </where>
+    </select>
+</mapper>
